@@ -1,1 +1,1 @@
-# cypress-tests
+# Examples of Cypress Tests
