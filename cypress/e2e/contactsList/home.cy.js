@@ -14,18 +14,14 @@ describe('Testes para a home', () => {
   })
 
   it('Deve editar um contato', () => {
-    cy.get('.sc-beqWaB').contains('teste@teste.com').then(() => {
-      cy.get('.edit').click()
-      cy.get('[type="text"]').clear().type('João Teste Editado')
-      cy.get('.alterar').click()
-      cy.get('.sc-beqWaB').last().should('contain', 'João Teste Editado')
-    })
+    cy.get('.sc-beqWaB').last().find('.edit').click()
+    cy.get('[type="text"]').clear().type('João Teste Editado')
+    cy.get('.alterar').click()
+    cy.get('.sc-beqWaB').last().should('contain', 'João Teste Editado')
   })
 
   it('Deve excluir um contato', () => {
-    cy.get('.sc-beqWaB').contains('teste@teste.com').then(() => {
-      cy.get('.delete').click()
-    })
-    cy.get('h2').should('contain',"0" )
+    cy.get('.sc-beqWaB').last().find('.delete').click()
+    cy.get('.sc-beqWaB').last().should('not.contain', 'teste@teste.com') 
   })
 })
